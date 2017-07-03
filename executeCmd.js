@@ -6,10 +6,11 @@ var parser = require('./ifconfig-parser');
 
 // retuen a promise(text)
 function executeIfconfig() {
-    var cmd = 'ifconfig';
+    var cmd = 'ip -s addr';
 
     return new Promise(function (resolve, reject) {
         exec(cmd, function(error, stdout, stderr) {
+		console.log(stdout);
             if (error) {
                 reject(error);
             } else {
