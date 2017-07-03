@@ -11,4 +11,4 @@
 
 var executeCmd = require('./executeCmd');
 
-executeCmd().then(console.dir);
+executeCmd().then(console.log);

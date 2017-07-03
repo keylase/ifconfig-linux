@@ -10,7 +10,6 @@ function executeIfconfig() {
 
     return new Promise(function (resolve, reject) {
         exec(cmd, function(error, stdout, stderr) {
-		console.log(stdout);
             if (error) {
                 reject(error);
             } else {

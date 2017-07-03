@@ -48,7 +48,7 @@ function parseSingleBlock(block) {
     var data = {};
     block.forEach(function(line,index) {
         var match = null;
-        if(match = line.match(/^\d+:\s(\S+)/)) { //7: eth5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+        if(match = line.match(/^\d+:\s(\S+):/)) { //7: eth5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
             data.device = match[1];
             var link = {};
             match = line.match(/state (\S+)/);
@@ -79,55 +79,25 @@ function parseSingleBlock(block) {
         } else if(match = line.match(/^\s+RX:/)) { //RX: bytes  packets  errors  dropped overrun mcast
             var section = {};
             var line = block[index+1];
-            if (match = line.match(/^\s+(\d+)/)) {
-                section.bytes = parseInt(match[1]);
-            }
-            if (match = line.match(/^\s+\d+\s+(\d+)/)) {
-                section.packets = parseInt(match[1]);
-            }
-            if (match = line.match(/^s+\d+\s+\d+\s+(\d+)/)) {
-                section.errors = parseInt(match[1]);
-            }
-            if (match = line.match(/overruns:(\S+)/)) {
-                section.overruns = parseInt(match[1]);
-            }
-            if (match = line.match(/frame:(\S+)/)) {
-                section.frame = parseInt(match[1]);
-            }
+	    match = line.match(/\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
+            section.bytes = parseInt(match[1]);
+            section.packets = parseInt(match[2]);
+            section.errors = parseInt(match[3]);
+            section.dropped = parseInt(match[4]);
+            section.overrun = parseInt(match[5]);
             data.rx = section;
-        } else if(match = line.match(/^\s+TX\s+packets/)) { // TX packets:50147 errors:0 dropped:0 overruns:0 carrier:0
-            var section = {};
-            if (match = line.match(/packets:(\S+)/)) {
-                section.packets = parseInt(match[1]);
-            }
-            if (match = line.match(/errors:(\S+)/)) {
-                section.errors = parseInt(match[1]);
-            }
-            if (match = line.match(/dropped:(\S+)/)) {
-                section.dropped = parseInt(match[1]);
-            }
-            if (match = line.match(/overruns:(\S+)/)) {
-                section.overruns = parseInt(match[1]);
-            }
-            if (match = line.match(/carrier:(\S+)/)) {
-                section.carrier = parseInt(match[1]);
-            }
+        } else if(match = line.match(/^\s+TX:/)) { // TX packets:50147 errors:0 dropped:0 overruns:0 carrier:0
+	    var section = {};
+            var line = block[index+1];
+            match = line.match(/\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/);
+            section.bytes = parseInt(match[1]);
+            section.packets = parseInt(match[2]);
+            section.errors = parseInt(match[3]);
+            section.dropped = parseInt(match[4]);
+            section.overrun = parseInt(match[5]);
             data.tx = section;
+
         } else {
-            var section = data.other || {};
-            if (match = line.match(/collisions:(\S+)/)) {
-                section.collisions = parseInt(match[1]);
-            }
-            if (match = line.match(/txqueuelen:(\S+)/)) {
-                section.txqueuelen = parseInt(match[1]);
-            }
-            if (match = line.match(/RX bytes:(\S+)/)) {
-                section.rxBytes = parseInt(match[1]);
-            }
-            if (match = line.match(/TX bytes:(\S+)/)) {
-                section.txBytes = parseInt(match[1]);
-            }
-            data.other = section;
         }
     });
     return data;
@@ -136,7 +106,6 @@ function parseSingleBlock(block) {
 // return a well-parsed object
 function parser(fullText) {
     var blocks = breakIntoBlocks(fullText);
-    console.log(blocks);
     var map = {};
     _.map(blocks, function(block) {
         var obj = parseSingleBlock(block);
