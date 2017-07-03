@@ -1,6 +1,6 @@
 {
   "name": "ipaddr-linux",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "wrap ip addr and parse result to json format",
   "main": "executeCmd.js",
   "scripts": {

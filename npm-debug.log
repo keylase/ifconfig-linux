@@ -1,0 +1,112 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/keylase/projects/comdi-bond/ipaddr-linux',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/keylase/.npm/ipaddr-linux/0.2.0/package.tgz not in flight; packing
+9 verbose correctMkdir /home/keylase/.npm correctMkdir not in flight; initializing
+10 info lifecycle ipaddr-linux@0.2.0~prepublish: ipaddr-linux@0.2.0
+11 silly lifecycle ipaddr-linux@0.2.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/keylase/.npm/ipaddr-linux/0.2.0/package.tgz',
+12 verbose tar pack   '/home/keylase/projects/comdi-bond/ipaddr-linux' ]
+13 verbose tarball /home/keylase/.npm/ipaddr-linux/0.2.0/package.tgz
+14 verbose folder /home/keylase/projects/comdi-bond/ipaddr-linux
+15 verbose addLocalTarball adding from inside cache /home/keylase/.npm/ipaddr-linux/0.2.0/package.tgz
+16 verbose correctMkdir /home/keylase/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd ipaddr-linux@0.2.0
+18 verbose afterAdd /home/keylase/.npm/ipaddr-linux/0.2.0/package/package.json not in flight; writing
+19 verbose correctMkdir /home/keylase/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /home/keylase/.npm/ipaddr-linux/0.2.0/package/package.json written
+21 silly publish { name: 'ipaddr-linux',
+21 silly publish   version: '0.2.0',
+21 silly publish   description: 'wrap ip addr and parse result to json format',
+21 silly publish   main: 'executeCmd.js',
+21 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+21 silly publish   bin: { 'ipaddr-linux': 'index.js' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/keylase/ipaddr-linux.git' },
+21 silly publish   keywords: [ 'ip addr', 'network', 'node.js', 'json', 'RX', 'TX' ],
+21 silly publish   author: { name: 'Alexey Strekalovskiy' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/keylase/ipaddr-linux/issues' },
+21 silly publish   dependencies:
+21 silly publish    { child_process: '1.0.2',
+21 silly publish      bluebird: '3.4.6',
+21 silly publish      underscore: '1.8.3' },
+21 silly publish   readme: '# ipaddr-linux\n\nWrap ip -s addr and parse result to json format (work on linux, not work on mac).\n\n\n# Command-line Example\n``` js\n{ lo: \n   { device: \'lo\',\n     link: { state: \'UNKNOWN\' },\n     inet: { addr: \'127.0.0.1/8\' },\n     inet6: { addr: \'::1/128\', scope: \'host\' },\n     rx: \n      { bytes: 1154563,\n        packets: 16185,\n        errors: 0,\n        dropped: 0,\n        overrun: 0 },\n     tx: \n      { bytes: 1154563,\n        packets: 16185,\n        errors: 0,\n        dropped: 0,\n        overrun: 0 } },\n  eth0: \n   { device: \'eth0\',\n     link: { state: \'DOWN\', hwaddr: \'50:7b:9d:68:02:a3\' },\n     rx: { bytes: 0, packets: 0, errors: 0, dropped: 0, overrun: 0 },\n     tx: { bytes: 0, packets: 0, errors: 0, dropped: 0, overrun: 0 } },\n  wlan0: \n   { device: \'wlan0\',\n     link: { state: \'UP\', hwaddr: \'dc:53:60:6b:32:bc\' },\n     inet: { addr: \'192.168.1.42/24\' },\n     inet6: { addr: \'fe80::de53:60ff:fe6b:32bc/64\', scope: \'link\' },\n     rx: \n      { bytes: 184690386,\n        packets: 361847,\n        errors: 0,\n        dropped: 0,\n        overrun: 0 },\n     tx: \n      { bytes: 125560762,\n        packets: 209219,\n        errors: 0,\n        dropped: 0,\n        overrun: 0 } },\n  docker0: \n   { device: \'docker0\',\n     link: { state: \'DOWN\', hwaddr: \'02:42:20:91:4e:d1\' },\n     inet: { addr: \'172.17.0.1/16\' },\n     rx: { bytes: 0, packets: 0, errors: 0, dropped: 0, overrun: 0 },\n     tx: { bytes: 0, packets: 0, errors: 0, dropped: 0, overrun: 0 } } }\n\n```\n\n# API Example\nIn addition to ipaddr-linux shell command-line, you can also `require(\'ipaddr-linux\')` from your node.js application as you wish.\n``` js\nvar promise = require(\'ipaddr-linux\')(); // this return a promise\npromise.then(console.dir);\n```\n\n# How it works\nThis module is based on `ip -s addr` linux command. It\'s tested and works on Ubuntu 17.04\n\n# install\n\nWith [npm](https://npmjs.org) do:\n\n```\nnpm install ipaddr-linux -g\n```\n\n# license\n\nMIT\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'e111a43a178c0ab855ab4b2629376e6ab9c79f54',
+21 silly publish   homepage: 'https://github.com/keylase/ipaddr-linux#readme',
+21 silly publish   _id: 'ipaddr-linux@0.2.0',
+21 silly publish   _shasum: 'd0ebae818e9382400649932d009ac7a90c642a37',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name ipaddr-linux
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'ipaddr-linux',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'ipaddr-linux',
+26 silly mapToRegistry   name: 'ipaddr-linux',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/ipaddr-linux
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /home/keylase/.npm/ipaddr-linux/0.2.0/package.tgz
+30 verbose request uri https://registry.npmjs.org/ipaddr-linux
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 11:04:26 PM
+33 verbose request using bearer token for auth
+34 verbose request id cd9c3726d8580bee
+35 http request PUT https://registry.npmjs.org/ipaddr-linux
+36 http 403 https://registry.npmjs.org/ipaddr-linux
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Mon, 03 Jul 2017 20:04:27 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-ams4433-AMS',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1499112267.982664,VS0,VE813',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /home/keylase/.npm/registry.npmjs.org/ipaddr-linux on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 0.2.0." : ipaddr-linux
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1044:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:965:12)
+41 verbose statusCode 403
+42 verbose pkgid ipaddr-linux
+43 verbose cwd /home/keylase/projects/comdi-bond/ipaddr-linux
+44 error Linux 4.10.0-26-generic
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v6.9.1
+47 error npm  v3.10.8
+48 error code E403
+49 error "You cannot publish over the previously published version 0.2.0." : ipaddr-linux
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
